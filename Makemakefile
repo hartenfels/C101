@@ -1,0 +1,58 @@
+# Makemakefile - A File For Making Makefiles for C and C++
+# This is a default Makemakefile with the most common settings.
+
+
+# The name for the binary that is output.
+BINARY  = ccompanies
+
+# Regexes for files to include. Default is all .c, .cpp and .cxx files in src/.
+INCLUDE = ^src/.*\.c$
+
+# Regexes for files to exclude.
+EXCLUDE = 
+
+
+# Flags for linker, compiler and dependency generator.
+%FLAGS%   = -Wall -Wextra -fexceptions -pedantic -pedantic-errors
+
+# Linker flags.
+%LDFLAGS% = 
+
+# Compiler flags.
+%CFLAGS%  = -Iinclude
+
+
+# C compiler command and options.
+%C%   = gcc -std=c11
+
+# Command for compilation. %<% is the source file, %>% is the object file.
+%COMPILE% = %FLAGS% %CFLAGS% -c %<% -o %>%
+
+# Command for dependency generation. %<% is the input object file.
+# This needs to output a Makefile rule to stdout.
+%DEPEND% = %FLAGS% %CFLAGS% -MM %<%
+
+
+# The linker to be used. %>% is the binary, %>% is the object files.
+LINKER                = %C% %FLAGS% -o %>% %<% %LDFLAGS%
+
+# Regex matching for which compiler to use.
+COMPILER .*\.c$       = %C% %COMPILE%
+
+# Regex matching for which dependency generator to use.
+DEPEND   .*\.c$       = %C% %DEPEND%
+
+
+# A build target named debug.
+TARGET debug
+    # Additional compiler flags, default -g for generate debugging symbols.
+    %CFLAGS% + -g
+
+    # Directory for binary files.
+    BINDIR   = bin/
+
+    # Directory for object files.
+    OBJDIR   = obj/
+
+ENDTARGET
+

@@ -1,37 +1,9 @@
 #include "c101_Cut.h"
 #include "c101_Company.h"
+#include "c101_Print.h"
 #include "c101_Subunit.h"
 #include "c101_Total.h"
 #include <stdio.h>
-
-static int depth;
-
-static void
-printSubunit(void* v)
-{
-    struct c101_Subunit* su = v;
-    for (int i = 0; i < depth; ++i)
-        putchar('\t');
-    if (su->isDepartment) {
-        struct c101_Department* d = &su->department;
-        printf("%s (%zd Subunits)\n", d->name, d->subunits.size);
-        ++depth;
-        c101_map(c101_begin(&d->subunits), c101_end(&d->subunits), printSubunit);
-        --depth;
-    } else {
-        printf("%s, %s, %g\n", su->employee.name, su->employee.address,
-                               su->employee.salary);
-    }
-}
-
-static void
-printCompany(struct c101_Company* c)
-{
-    printf("%s (%zd Departments)\n", c->name, c->subunits.size);
-    ++depth;
-    c101_map(c101_begin(&c->subunits), c101_end(&c->subunits), printSubunit);
-    --depth;
-}
 
 int
 main(void)
@@ -54,7 +26,7 @@ main(void)
                     )
                 )
             );
-    printCompany(company);
+    c101_printCompany(company);
 	printf("Total: %g\n", c101_totalCompany(company));
 	c101_cutCompany(company);
 	printf("Cut:   %g\n", c101_totalCompany(company));

@@ -11,8 +11,8 @@ clean_debug:
 
 
 # Build rules for debug
-bin/ccompanies: obj/src/c101_Company.c.o obj/src/c101_Cut.c.o obj/src/c101_Subunit.c.o obj/src/c101_Total.c.o obj/src/c101_Util.c.o obj/src/c101_Vector.c.o obj/src/main.c.o | bin/
-	gcc -std=c11 -Wall -Wextra -fexceptions -pedantic -pedantic-errors -o bin/ccompanies obj/src/c101_Company.c.o obj/src/c101_Cut.c.o obj/src/c101_Subunit.c.o obj/src/c101_Total.c.o obj/src/c101_Util.c.o obj/src/c101_Vector.c.o obj/src/main.c.o 
+bin/ccompanies: obj/src/c101_Company.c.o obj/src/c101_Cut.c.o obj/src/c101_Print.c.o obj/src/c101_Subunit.c.o obj/src/c101_Total.c.o obj/src/c101_Util.c.o obj/src/c101_Vector.c.o obj/src/main.c.o | bin/
+	gcc -std=c11 -Wall -Wextra -fexceptions -pedantic -pedantic-errors -o bin/ccompanies obj/src/c101_Company.c.o obj/src/c101_Cut.c.o obj/src/c101_Print.c.o obj/src/c101_Subunit.c.o obj/src/c101_Total.c.o obj/src/c101_Util.c.o obj/src/c101_Vector.c.o obj/src/main.c.o 
 obj/src/c101_Company.c.o: src/c101_Company.c include/c101_Company.h \
  include/c101_Vector.h include/c101_Subunit.h include/c101_Util.h | obj/src/
 	gcc -std=c11 -Wall -Wextra -fexceptions -pedantic -pedantic-errors -Iinclude -g -c src/c101_Company.c -o obj/src/c101_Company.c.o
@@ -20,6 +20,10 @@ obj/src/c101_Company.c.o: src/c101_Company.c include/c101_Company.h \
 obj/src/c101_Cut.c.o: src/c101_Cut.c include/c101_Cut.h include/c101_Company.h \
  include/c101_Vector.h include/c101_Subunit.h | obj/src/
 	gcc -std=c11 -Wall -Wextra -fexceptions -pedantic -pedantic-errors -Iinclude -g -c src/c101_Cut.c -o obj/src/c101_Cut.c.o
+
+obj/src/c101_Print.c.o: src/c101_Print.c include/c101_Print.h \
+ include/c101_Company.h include/c101_Vector.h include/c101_Subunit.h | obj/src/
+	gcc -std=c11 -Wall -Wextra -fexceptions -pedantic -pedantic-errors -Iinclude -g -c src/c101_Print.c -o obj/src/c101_Print.c.o
 
 obj/src/c101_Subunit.c.o: src/c101_Subunit.c include/c101_Subunit.h \
  include/c101_Vector.h include/c101_Util.h | obj/src/

@@ -20,8 +20,8 @@ void               c101_clearVector(struct c101_Vector* vector);
 void               c101_freeVector (struct c101_Vector* vector);
 
 
-void c101_resize(struct c101_Vector* vector,
-                 size_t capacity);
+void c101_resize  (struct c101_Vector* vector,
+                   size_t capacity);
 
 void c101_pushBack(struct c101_Vector* vector,
                    void*               element);

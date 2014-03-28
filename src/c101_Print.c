@@ -6,7 +6,7 @@ static size_t depth;
 static void
 c101_print(void* v)
 {
-    for (int i = 0; i < depth; ++i)
+    for (size_t i = 0; i < depth; ++i)
         putchar('\t');
     c101_printSubunit(v);
 }

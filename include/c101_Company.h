@@ -36,9 +36,9 @@ struct c101_Company {
 };
 
 
-struct c101_Company* c101_newCompany(char*  name,
-                                     size_t subunitCount,
-                                            ...);
+struct c101_Company* c101_newCompany(const char* name,
+                                     size_t      subunitCount,
+                                                 ...);
 
 
 void                c101_freeCompany(struct c101_Company*);

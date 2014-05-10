@@ -26,13 +26,13 @@ struct c101_Subunit {
 };
 
 
-struct c101_Subunit* c101_newEmployee  (char*  name,
-                                        char*  address,
-                                        double salary);
+struct c101_Subunit* c101_newEmployee  (const char* name,
+                                        const char* address,
+                                        double      salary);
 
-struct c101_Subunit* c101_newDepartment(char*  name,
-                                        size_t subunitCount,
-                                               ...);
+struct c101_Subunit* c101_newDepartment(const char* name,
+                                        size_t      subunitCount,
+                                                    ...);
 
 void                 c101_freeSubunit  (void* subunit);
 

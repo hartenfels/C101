@@ -28,7 +28,7 @@ c101_realloc(void* ptr, size_t size)
 }
 
 char*
-c101_strdup(char* str)
+c101_strdup(const char* str)
 {
     size_t len = strlen(str);
     if (len) {

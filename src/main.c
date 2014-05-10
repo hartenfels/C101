@@ -1,5 +1,6 @@
 #include "c101_Cut.h"
 #include "c101_Company.h"
+#include "c101_Parsing.h"
 #include "c101_Print.h"
 #include "c101_Subunit.h"
 #include "c101_Total.h"
@@ -31,6 +32,11 @@ main(void)
 	c101_cutCompany(company);
 	printf("Cut:   %g\n", c101_totalCompany(company));
     c101_freeCompany(company);
+
+    company = c101_parse("sample.lua");
+    c101_printCompany(company);
+    c101_freeCompany (company);
+
     return 0;
 }
 

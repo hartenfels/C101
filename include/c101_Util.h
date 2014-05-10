@@ -70,7 +70,7 @@ If allocation fails, the program will exit, as per ::c101_malloc.
 of length 0 or `NULL` was given.
 @see c101_malloc
 <!------------------------------------------------------------------------------------>*/
-char* c101_strdup (char*  str);
+char* c101_strdup (const char* str);
 
 
 #ifdef __cplusplus

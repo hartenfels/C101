@@ -3,7 +3,7 @@
 #include <stdarg.h>
 
 struct c101_Subunit*
-c101_newEmployee(char* n, char* a, double s)
+c101_newEmployee(const char* n, const char* a, double s)
 {
     struct c101_Subunit* e = c101_malloc(sizeof(struct c101_Subunit));
     e->isDepartment        = false;
@@ -14,7 +14,7 @@ c101_newEmployee(char* n, char* a, double s)
 }
 
 struct c101_Subunit*
-c101_newDepartment(char* n, size_t count, ...)
+c101_newDepartment(const char* n, size_t count, ...)
 {
     struct c101_Subunit* d = c101_malloc(sizeof(struct c101_Subunit));
     d->isDepartment        = true;

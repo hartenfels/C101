@@ -4,7 +4,7 @@
 #include <stdarg.h>
 
 struct c101_Company*
-c101_newCompany(char* n, size_t count, ...)
+c101_newCompany(const char* n, size_t count, ...)
 {
     struct c101_Company* c = c101_malloc(sizeof(struct c101_Company));
     c->name                = c101_strdup(n);

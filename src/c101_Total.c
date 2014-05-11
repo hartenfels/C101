@@ -1,29 +1,19 @@
 #include "c101_Total.h"
+#include "c101_Subunit.h"
+#include "c101_Visit.h"
 
 static void
-c101_total(void* su, void* out)
+totalVisitor(enum c101_VisitorType type, void* unit, void* out)
 {
-    *(double*) out += c101_totalSubunit((struct c101_Subunit*) su);
+    if (type == C101_EMPLOYEE)
+        *(double*) out += ((struct c101_Employee*) unit)->salary;
 }
 
 double
-c101_totalCompany(struct c101_Company* c)
+c101_total(struct c101_Company* c)
 {
-    double total = 0;
-    c101_fold(c101_begin(&c->subunits), c101_end(&c->subunits), &total, c101_total);
-    return total;
-}
-
-double
-c101_totalSubunit(struct c101_Subunit* su)
-{
-    if (su->isDepartment) {
-        double total = 0;
-        c101_fold(c101_begin(&su->department.subunits),
-                  c101_end(&su->department.subunits), &total, c101_total);
-        return total;
-    } else {
-        return su->employee.salary;
-    }
+    double out = 0.0;
+    c101_visitCompany(c, &out, totalVisitor);
+    return out;
 }
 

@@ -18,14 +18,14 @@ return {
 				{
 					name        = "Dev1",
 					employees   = {
-						{name = "Klaus", address = "Bostom", salary = 23456},
+						{name = "Klaus", address = "Boston", salary = 23456},
 					},
 					departments = {
 						{
 							name      = "Dev1.1",
 							employees = {
-								{name = "Karl", address = "Riga", salary = 2345},
-								{name = "Joe",  address = "Wifi", salary = 2344},
+								{name = "Karl", address = "Riga",      salary = 2345},
+								{name = "Joe",  address = "Wifi City", salary = 2344},
 							},
 						},
 					},

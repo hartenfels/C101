@@ -6,9 +6,7 @@
 extern "C" {
 #endif
 
-void c101_cutCompany(struct c101_Company* company);
-
-void c101_cutSubunit(struct c101_Subunit* subunit);
+void c101_cut(struct c101_Company* company);
 
 #ifdef __cplusplus
 }

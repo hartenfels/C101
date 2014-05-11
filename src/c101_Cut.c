@@ -1,24 +1,15 @@
 #include "c101_Cut.h"
+#include "c101_Visit.h"
 
 static void
-c101_cut(void* su)
+cutVisitor(enum c101_VisitorType type, void* unit, void* userData)
 {
-    c101_cutSubunit((struct c101_Subunit*) su);
+    (void) userData;
+    if (type == C101_EMPLOYEE)
+        ((struct c101_Employee*) unit)->salary /= 2.0;
 }
 
 void
-c101_cutCompany(struct c101_Company* c)
-{
-    c101_map(c101_begin(&c->subunits), c101_end(&c->subunits), c101_cut);
-}
-
-void
-c101_cutSubunit(struct c101_Subunit* su)
-{
-    if (su->isDepartment)
-        c101_map(c101_begin(&su->department.subunits),
-                 c101_end(&su->department.subunits), c101_cut);
-    else
-        su->employee.salary /= 2;
-}
+c101_cut(struct c101_Company* c)
+{ c101_visitCompany(c, NULL, cutVisitor); }
 

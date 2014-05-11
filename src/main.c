@@ -1,5 +1,7 @@
 #include "c101_Cut.h"
 #include "c101_Company.h"
+#include "c101_Depth.h"
+#include "c101_Median.h"
 #include "c101_Parsing.h"
 #include "c101_Print.h"
 #include "c101_Subunit.h"
@@ -27,14 +29,16 @@ main(void)
                     )
                 )
             );
-    c101_printCompany(company);
-	printf("Total: %g\n", c101_totalCompany(company));
-	c101_cutCompany(company);
-	printf("Cut:   %g\n", c101_totalCompany(company));
+    c101_print(company);
+    printf("Depth:  %u\n", c101_depth (company));
+	printf("Total:  %g\n", c101_total (company));
+    printf("Median: %g\n", c101_median(company));
+	c101_cut(company);
+	printf("Cut:    %g\n", c101_total (company));
     c101_freeCompany(company);
 
     company = c101_parse("sample.lua");
-    c101_printCompany(company);
+    c101_print(company);
     c101_freeCompany (company);
 
     return 0;

@@ -6,13 +6,16 @@ project("Contribution:C")
 
 set(mySourceFiles
     src/c101_Company.c
-    src/c101_Print.c
-    src/c101_Total.c
-    src/c101_Vector.c
     src/c101_Cut.c
-    src/c101_Subunit.c
-    src/c101_Util.c
+    src/c101_Depth.c
+    src/c101_Median.c
     src/c101_Parsing.c
+    src/c101_Print.c
+    src/c101_Subunit.c
+    src/c101_Total.c
+    src/c101_Util.c
+    src/c101_Vector.c
+    src/c101_Visit.c
 )
 
 add_executable(c101 src/main.c ${mySourceFiles})

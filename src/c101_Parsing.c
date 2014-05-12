@@ -1,34 +1,12 @@
 #include "c101_Parsing.h"
 #include "c101_Company.h"
 #include "c101_Subunit.h"
+#include "c101_Util.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <lua.h>
 #include <lauxlib.h>
 #include <lualib.h>
-
-static void
-c101_luaError(lua_State* lua, const char* err)
-{
-    fputs("Parsing Error: ", stderr);
-    fputs(err,               stderr);
-    fputc('\n',              stderr);
-    if (lua)
-        lua_close(lua);
-    abort();
-}
-
-static lua_State*
-c101_initLua(const char* file)
-{
-    lua_State* lua = luaL_newstate();
-    if (!lua)
-        c101_luaError(NULL, "Could not create Lua state");
-    luaL_openlibs(lua);
-    if (luaL_dofile(lua, file))
-        c101_luaError(lua, lua_tostring(lua, -1));
-    return lua;
-}
 
 static void
 c101_warnExcessive(lua_State* lua, int idx)

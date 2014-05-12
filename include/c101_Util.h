@@ -5,6 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+struct lua_State;
 
 /**<!--===============================================================================-->
 
@@ -70,7 +71,13 @@ If allocation fails, the program will exit, as per ::c101_malloc.
 of length 0 or `NULL` was given.
 @see c101_malloc
 <!------------------------------------------------------------------------------------>*/
-char* c101_strdup (const char* str);
+char* c101_strdup  (const char* str);
+
+
+struct lua_State* c101_initLua (const char      * file);
+
+void              c101_luaError(struct lua_State* lua,
+                                const char      * error);
 
 
 #ifdef __cplusplus

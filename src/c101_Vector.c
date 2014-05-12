@@ -92,7 +92,7 @@ c101_removeDestroy(struct c101_Vector* v, size_t pos)
 void*
 c101_at(struct c101_Vector* v, size_t pos)
 {
-    assert(v->size < pos && "c101_at: vector index out of range");
+    assert(pos < v->size && "c101_at: vector index out of range");
     return v->data[pos];
 }
 

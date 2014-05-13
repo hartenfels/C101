@@ -26,7 +26,7 @@ unparseVisitor(enum c101_VisitorType type, void* unit, void* userData)
         lua_getglobal (lua, "unparseCompany");
         lua_pushstring(lua, ((struct c101_Company*) unit)->name);
         if (lua_pcall(lua, 1, 1, 0))
-            abort();
+            c101_luaError(lua, lua_tostring(lua, -1));
         break;
 
     case C101_DEPARTMENT:
@@ -34,7 +34,7 @@ unparseVisitor(enum c101_VisitorType type, void* unit, void* userData)
         luaSwap       (lua);
         lua_pushstring(lua, ((struct c101_Department*) unit)->name);
         if (lua_pcall(lua, 2, 2, 0))
-            abort();
+            c101_luaError(lua, lua_tostring(lua, -1));
         break;
 
     case C101_DEPARTMENT_END:
@@ -51,7 +51,7 @@ unparseVisitor(enum c101_VisitorType type, void* unit, void* userData)
             lua_pushnumber(lua, e->salary);
         }
         if (lua_pcall(lua, 4, 1, 0))
-            abort();
+            c101_luaError(lua, lua_tostring(lua, -1));
         break;
 
     default:
@@ -70,7 +70,7 @@ c101_unparse(struct c101_Company* c, FILE* luaOut, FILE* jsonOut)
         lua_getglobal(lua, "dumpLua");
         luaSwap      (lua);
         if (lua_pcall(lua, 1, 2, 0))
-            abort();
+            c101_luaError(lua, lua_tostring(lua, -1));
         if (fputs(lua_tostring(lua, -1), luaOut) == EOF)
             perror("Error writing Lua output");
         lua_pop(lua, 1);
@@ -80,7 +80,7 @@ c101_unparse(struct c101_Company* c, FILE* luaOut, FILE* jsonOut)
         lua_getglobal(lua, "dumpJson");
         luaSwap      (lua);
         if (lua_pcall(lua, 1, 2, 0))
-            abort();
+            c101_luaError(lua, lua_tostring(lua, -1));
         if (fputs(lua_tostring(lua, -1), jsonOut) == EOF)
             perror("Error writing JSON output");
         lua_pop(lua, 1);

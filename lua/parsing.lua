@@ -66,7 +66,7 @@ end
 
 function warnExcessive(table, what)
     for key, value in pairs(table) do
-        print("Warning: excessive table key \"", key, "\" in ", what)
+        print("Warning: excessive table key \"" .. key .. "\" in " .. what)
     end
 end
 

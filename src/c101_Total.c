@@ -2,11 +2,12 @@
 #include "c101_Subunit.h"
 #include "c101_Visit.h"
 
-static void
+static int
 totalVisitor(enum c101_VisitorType type, void* unit, void* out)
 {
     if (type == C101_EMPLOYEE)
         *(double*) out += ((struct c101_Employee*) unit)->salary;
+    return 0;
 }
 
 double

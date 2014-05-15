@@ -3,7 +3,7 @@
 #include "c101_Visit.h"
 #include <stdio.h>
 
-static void
+static int
 printVisitor(enum c101_VisitorType type, void* unit, void* userData)
 {
     double* depth = userData;
@@ -46,6 +46,7 @@ printVisitor(enum c101_VisitorType type, void* unit, void* userData)
     default:
         break;
     }
+    return 0;
 }
 
 void

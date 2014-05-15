@@ -43,29 +43,12 @@ c101_strdup(const char* str)
     return NULL;
 }
 
-
-
-lua_State*
-c101_initLua(const char* file)
+int
+c101_error(int err, const char* msg, jmp_buf* env)
 {
-    lua_State* lua = luaL_newstate();
-    if (!lua)
-        c101_luaError(NULL, "Could not create Lua state");
-    luaL_openlibs(lua);
-    if (luaL_dofile(lua, file))
-        c101_luaError(lua, lua_tostring(lua, -1));
-    return lua;
+    fprintf(stderr, "%s (Code %d)\n", msg, err);
+    if (env)
+        longjmp(*env, err);
+    return err;
 }
-
-void
-c101_luaError(lua_State* lua, const char* err)
-{
-    fputs("Parsing Error: ", stderr);
-    fputs(err,               stderr);
-    fputc('\n',              stderr);
-    if (lua)
-        lua_close(lua);
-    abort();
-}
-
 

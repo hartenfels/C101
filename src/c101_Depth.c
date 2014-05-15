@@ -2,7 +2,7 @@
 #include "c101_Subunit.h"
 #include "c101_Visit.h"
 
-static void
+static int
 depthVisitor(enum c101_VisitorType type, void* unit, void* userData)
 {
     (void) unit;
@@ -20,6 +20,7 @@ depthVisitor(enum c101_VisitorType type, void* unit, void* userData)
     default:
         break;
     }
+    return 0;
 }
 
 unsigned int

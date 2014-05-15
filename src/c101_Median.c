@@ -2,7 +2,7 @@
 #include "c101_Subunit.h"
 #include "c101_Visit.h"
 
-static void
+static int
 medianVisitor(enum c101_VisitorType type, void* unit, void* userData)
 {
     if (type == C101_EMPLOYEE) {
@@ -10,6 +10,7 @@ medianVisitor(enum c101_VisitorType type, void* unit, void* userData)
         data[0] += ((struct c101_Employee*) unit)->salary;
         ++data[1];
     }
+    return 0;
 }
 
 double

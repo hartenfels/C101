@@ -3,6 +3,7 @@
 #include "c101_Subunit.h"
 #include "c101_Util.h"
 #include "c101_Vector.h"
+#include <setjmp.h>
 #include <lua.h>
 #include <lauxlib.h>
 #include <lualib.h>
@@ -11,6 +12,20 @@ struct ParseData {
     struct c101_Company* company;
     struct c101_Vector   stack;
 };
+
+static void
+parseError(lua_State* lua, struct ParseData* data, jmp_buf* env)
+{
+    fputs(lua_tostring(lua, -1), stderr);
+    lua_close(lua);
+    if (data) {
+        if (data->company)
+            c101_freeCompany(data->company);
+        if (data->stack.capacity)
+            c101_freeVector (&data->stack);
+    }
+    longjmp(*env, 1);
+}
 
 static int
 c101_parseCompany(lua_State* lua)
@@ -67,7 +82,16 @@ c101_endDepartment(lua_State* lua)
 struct c101_Company*
 c101_parse(const char* file)
 {
-    lua_State* lua = c101_initLua("parsing.lua");
+    jmp_buf env;
+    if (setjmp(env))
+        return NULL;
+
+    lua_State* lua = luaL_newstate();
+    if (!lua)
+        c101_error(1, "Could not create Lua state", &env);
+    luaL_openlibs(lua);
+    if (luaL_dofile(lua, "parsing.lua"))
+        parseError(lua, NULL, &env);
 
     lua_pushcfunction(lua,  c101_parseCompany    );
     lua_setglobal    (lua, "c101_parseCompany"   );
@@ -79,13 +103,14 @@ c101_parse(const char* file)
     lua_setglobal    (lua, "c101_endDepartment"  );
 
     lua_getglobal(lua, "parseCompany");
-    struct ParseData data;
+    struct ParseData data = {0};
     lua_pushlightuserdata(lua, &data);
+
     if (luaL_dofile(lua, file))
-        c101_luaError(lua, lua_tostring(lua, -1));
+        parseError(lua, &data, &env);
 
     if (lua_pcall(lua, 2, 0, 0))
-        c101_luaError(lua, lua_tostring(lua, -1));
+        parseError(lua, &data, &env);
     lua_close(lua);
 
     c101_freeVector(&data.stack);

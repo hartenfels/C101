@@ -1,5 +1,6 @@
 #ifndef COMPANIES101_UTIL_HPP
 #define COMPANIES101_UTIL_HPP
+#include <setjmp.h>
 #include <stdlib.h>
 #include <string.h>
 #ifdef __cplusplus
@@ -74,10 +75,9 @@ of length 0 or `NULL` was given.
 char* c101_strdup  (const char* str);
 
 
-struct lua_State* c101_initLua (const char      * file);
-
-void              c101_luaError(struct lua_State* lua,
-                                const char      * error);
+int   c101_error(int         err,
+                 const char* msg,
+                 jmp_buf   * env);
 
 
 #ifdef __cplusplus

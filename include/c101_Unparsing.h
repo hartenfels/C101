@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 
-void c101_unparse(struct c101_Company* company, FILE* luaOut, FILE* jsonOut);
+int c101_unparse(struct c101_Company* company, FILE* luaOut, FILE* jsonOut);
 
 #ifdef __cplusplus
 }

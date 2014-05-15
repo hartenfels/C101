@@ -14,17 +14,17 @@ enum c101_VisitorType {
     C101_EMPLOYEE
 };
 
-void c101_visitCompany   (struct c101_Company   * company,
-                          void                  * userData,
-                          void (*visitor)(enum c101_VisitorType, void*, void*));
+int c101_visitCompany   (struct c101_Company   * company,
+                         void                  * userData,
+                         int (*visitor)(enum c101_VisitorType, void*, void*));
 
-void c101_visitDepartment(struct c101_Department* department,
-                          void                  * userData,
-                          void (*visitor)(enum c101_VisitorType, void*, void*));
+int c101_visitDepartment(struct c101_Department* department,
+                         void                  * userData,
+                         int (*visitor)(enum c101_VisitorType, void*, void*));
 
-void c101_visitEmployee  (struct c101_Employee  * employee,
-                          void                  * userData,
-                          void (*visitor)(enum c101_VisitorType, void*, void*));
+int c101_visitEmployee  (struct c101_Employee  * employee,
+                         void                  * userData,
+                         int (*visitor)(enum c101_VisitorType, void*, void*));
 
 
 #ifdef __cplusplus

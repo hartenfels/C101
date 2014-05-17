@@ -10,4 +10,12 @@ This application manages its build process using [CMake](http://www.cmake.org/).
     cmake ..
     make
 
-To run it, use `./c101`.
+This will build an executable, a shared library and tests using that shared library. To run the executable, use `./c101`.
+
+Testing
+-------
+
+Testing uses CTest from CMake.
+
+After running `make` and building everything, run `make test` to run CTest.
+

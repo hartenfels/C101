@@ -45,7 +45,8 @@
 		\fitem Overview
         \fitem ``Object'' Model
         \fitem Graph Traversal
-        \fitem Parsing/Unparsing
+        \fitem Parsing and Unparsing
+        \fitem Building and Testing
 	\end{enumerate}
 \end{frame}
 
@@ -93,7 +94,7 @@
 
 \nextframe
 \begin{frame}
-	\framecount{Parsing/Unparsing}\pause
+	\framecount{Parsing and Unparsing}\pause
 	\begin{itemize}[<+->]
         \fitem Huge Library Support
         \fitem Still Complicated in C:
@@ -107,7 +108,7 @@
 \end{frame}
 
 \begin{frame}
-	\framecount{Parsing/Unparsing}\pause
+	\framecount{Parsing and Unparsing}\pause
 	\begin{itemize}[<+->]
         \fitem Lua 
         \begin{itemize}[<+->]
@@ -120,7 +121,7 @@
 \end{frame}
 
 \begin{frame}
-	\framecount{Parsing/Unparsing}\pause
+	\framecount{Parsing and Unparsing}\pause
 	\begin{itemize}[<+->]
 		\fitem Parsing:
 		\begin{itemize}
@@ -131,6 +132,23 @@
 		\begin{itemize}
 			\fitem Traverse Object Graph
 			\fitem Calls to Lua to Build Table
+        \end{itemize}
+	\end{itemize}
+\end{frame}
+
+\nextframe
+\begin{frame}
+	\framecount{Building and Testing}\pause
+	\begin{itemize}[<+->]
+        \fitem CMake for Building
+        \begin{itemize}
+            \fitem Cross-Platform Dependency Handling
+        \end{itemize}
+        \fitem CTest for Testing
+		\begin{itemize}
+            \fitem Integrated Into CMake
+			\fitem Issue: Compile Time
+            \fitem Solution: Shared Library
         \end{itemize}
 	\end{itemize}
 \end{frame}

@@ -1,5 +1,6 @@
 #include "c101_Subunit.h"
 #include "c101_Util.h"
+#include <assert.h>
 #include <stdarg.h>
 
 struct c101_Subunit*
@@ -12,6 +13,36 @@ c101_newEmployee(const char* n, const char* a, double s)
     e->employee.salary     = s;
     return e;
 }
+
+
+struct c101_Employee*
+c101_toEmployee(struct c101_Subunit* su)
+{ return su->isDepartment ? NULL : &su->employee; }
+
+
+void
+c101_setEmployeeName(struct c101_Subunit* e, const char* n)
+{
+    assert(!e->isDepartment);
+    free(e->employee.name);
+    e->employee.name = c101_strdup(n);
+}
+
+void
+c101_setEmployeeAddress(struct c101_Subunit* e, const char* a)
+{
+    assert(!e->isDepartment);
+    free(e->employee.address);
+    e->employee.address = c101_strdup(a);
+}
+
+void
+c101_setEmployeeSalary(struct c101_Subunit* e, double s)
+{
+    assert(!e->isDepartment);
+    e->employee.salary = s;
+}
+
 
 struct c101_Subunit*
 c101_newDepartment(const char* n, size_t count, ...)
@@ -31,6 +62,27 @@ c101_newDepartment(const char* n, size_t count, ...)
 
     return d;
 }
+
+struct c101_Department*
+c101_toDepartment(struct c101_Subunit* su)
+{ return su->isDepartment ? &su->department : NULL; }
+
+
+void
+c101_setDepartmentName(struct c101_Subunit* d, const char* n)
+{
+    assert(d->isDepartment);
+    free(d->department.name);
+    d->department.name = c101_strdup(n);
+}
+
+void
+c101_addSubunit(struct c101_Subunit* d, struct c101_Subunit* su)
+{
+    assert(d->isDepartment);
+    c101_pushBack(&d->department.subunits, su);
+}
+
 
 void
 c101_freeSubunit(void* v)

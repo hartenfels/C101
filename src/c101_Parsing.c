@@ -46,10 +46,10 @@ c101_parseDepartment(lua_State* lua)
     const char      * name = lua_tostring   (lua, 2);
 
     struct c101_Subunit* subunit = c101_newDepartment(name, 0);
-    struct c101_Vector * parent  = data->stack.size
-            ? &((struct c101_Subunit*) c101_back(&data->stack))->department.subunits
-            : &data->company->subunits;
-    c101_pushBack(parent,       subunit);
+    if (data->stack.size)
+        c101_addSubunit   (c101_back(&data->stack), subunit);
+    else
+        c101_addDepartment(data->company, subunit);
     c101_pushBack(&data->stack, subunit);
 
     return 0;
@@ -63,10 +63,7 @@ c101_parseEmployee(lua_State* lua)
     const char      * address = lua_tostring   (lua, 3);
     double            salary  = lua_tonumber   (lua, 4);
 
-    struct c101_Subunit* subunit = c101_newEmployee(name, address, salary);
-    struct c101_Vector * parent  =
-              &((struct c101_Subunit*) c101_back(&data->stack))->department.subunits;
-    c101_pushBack(parent, subunit);
+    c101_addSubunit(c101_back(&data->stack), c101_newEmployee(name, address, salary));
 
     return 0;
 }

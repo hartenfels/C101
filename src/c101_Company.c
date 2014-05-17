@@ -1,6 +1,7 @@
 #include "c101_Company.h"
 #include "c101_Subunit.h"
 #include "c101_Util.h"
+#include <assert.h>
 #include <stdarg.h>
 
 struct c101_Company*
@@ -24,5 +25,19 @@ void c101_freeCompany(struct c101_Company* c)
     free(c->name);
     c101_freeVector(&c->subunits);
     free(c);
+}
+
+
+void
+c101_setCompanyName(struct c101_Company* c, const char* n)
+{
+    free(c->name);
+    c->name = c101_strdup(n);
+}
+
+void c101_addDepartment (struct c101_Company* c, struct c101_Subunit* d)
+{
+    assert(d->isDepartment);
+    c101_pushBack(&c->subunits, d);
 }
 

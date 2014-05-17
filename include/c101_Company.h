@@ -4,6 +4,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+struct c101_Subunit;
 
 /**<!--===============================================================================-->
 
@@ -40,8 +41,14 @@ struct c101_Company* c101_newCompany(const char* name,
                                      size_t      subunitCount,
                                                  ...);
 
+void                c101_freeCompany(struct c101_Company* company);
 
-void                c101_freeCompany(struct c101_Company*);
+
+void c101_setCompanyName(struct c101_Company* company,
+                         const char         * name);
+
+void c101_addDepartment (struct c101_Company* company,
+                         struct c101_Subunit* department);
 
 
 #ifdef __cplusplus

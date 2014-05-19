@@ -1,4 +1,4 @@
-\documentclass[12pt,slidestop,handout]{beamer}
+\documentclass[12pt,slidestop]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \beamertemplatenavigationsymbolsempty
@@ -27,6 +27,7 @@
 \newcommand{\fitem}{\vfill\item}
 
 \title{Contribution:C}
+\subtitle{Not C/C++}
 \author{Carsten Hartenfels}
 \date{2014-05-12}
 
@@ -85,9 +86,8 @@
         \fitem Solution: Visitor Pattern
         \begin{itemize}
             \fitem Common, Idiomatic C
-            \fitem Visitor via Function Pointer
-            \fitem Visited Data Type via Switch-Case
-            \fitem User-Supplied Data via Untyped Pointer (void*)
+            \fitem Function and Void Pointers
+			\fitem Used for Cut, Depth, Median, Total, Parsing, Unparsing 
         \end{itemize}
 	\end{itemize}
 \end{frame}

@@ -33,69 +33,69 @@
 
 \begin{document}
 \begin{frame}
-	\titlepage
+    \titlepage
     \begin{center}
         \url{http://101companies.org/wiki/Contribution:c}
     \end{center}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Contents}
-	\pause
-	\begin{enumerate}[<+->]
-		\fitem Overview
+    \frametitle{Contents}
+    \pause
+    \begin{enumerate}[<+->]
+        \fitem Overview
         \fitem ``Object'' Model
         \fitem Graph Traversal
         \fitem Parsing and Unparsing
-        \fitem Building and Testing
-	\end{enumerate}
+    \end{enumerate}
 \end{frame}
 
 \nextframe
 \begin{frame}
-	\framecount{Overview}\pause
-	\begin{itemize}[<+->]
+    \framecount{Overview}\pause
+    \begin{itemize}[<+->]
         \fitem Implementation Language: C
+        \fitem Building and Testing: CMake
         \fitem Features:
         \begin{itemize}[<+->]
             \fitem Hierarchical Company
             \fitem Cut, Depth, Median, Total
             \fitem Parsing, Unparsing
         \end{itemize}
-	\end{itemize}
+    \end{itemize}
 \end{frame}
 
 \nextframe
 \begin{frame}
-	\framecount{``Object'' Model}\pause
-	\begin{itemize}[<+->]
+    \framecount{``Object'' Model}\pause
+    \begin{itemize}[<+->]
         \fitem No OO Support
         \fitem Instead: Structured Programming
         \begin{itemize}
-        	\fitem State: Plain Old Data
-        	\fitem Operations: Functions with Pointers
-		\end{itemize}
-	\end{itemize}
+            \fitem State: Plain Old Data
+            \fitem Operations: Functions with Pointers
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \nextframe
 \begin{frame}
-	\framecount{Graph Traversal}\pause
-	\begin{itemize}[<+->]
+    \framecount{Graph Traversal}\pause
+    \begin{itemize}[<+->]
         \fitem Most Features Traverse Object Graph
         \fitem Solution: Visitor Pattern
         \begin{itemize}
             \fitem Common, Idiomatic C
             \fitem Function and Void Pointers
-			\fitem Used for Cut, Depth, Median, Total, Parsing, Unparsing 
+            \fitem Used for Cut, Depth, Median, Total, Parsing, Unparsing 
         \end{itemize}
-	\end{itemize}
+    \end{itemize}
 \end{frame}
 
 \nextframe
 \begin{frame}
-	\framecount{Parsing and Unparsing}\pause
-	\begin{itemize}[<+->]
+    \framecount{Parsing and Unparsing}\pause
+    \begin{itemize}[<+->]
         \fitem Huge Library Support
         \fitem Still Complicated in C:
         \begin{itemize}[<+->]
@@ -104,62 +104,45 @@
             \fitem String Handling is Bonkers
         \end{itemize}
         \fitem Solution: Just Use Another Language
-	\end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
-	\framecount{Parsing and Unparsing}\pause
-	\begin{itemize}[<+->]
+    \framecount{Parsing and Unparsing}\pause
+    \begin{itemize}[<+->]
         \fitem Lua 
         \begin{itemize}[<+->]
             \fitem Embedded Scripting Language in C89
             \fitem Stack-Based C Interface
             \fitem ``Table'' Container (Hash/Array Combination)
-			\fitem Conversion to JSON, XML, YAML etc.
+            \fitem Conversion to JSON, XML, YAML etc.
         \end{itemize}
-	\end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
-	\framecount{Parsing and Unparsing}\pause
-	\begin{itemize}[<+->]
-		\fitem Parsing:
-		\begin{itemize}
-			\fitem Traverse Lua Table
-			\fitem Calls to C to Build Object Graph
-        \end{itemize}
-		\fitem Unparsing:
-		\begin{itemize}
-			\fitem Traverse Object Graph
-			\fitem Calls to Lua to Build Table
-        \end{itemize}
-	\end{itemize}
-\end{frame}
-
-\nextframe
-\begin{frame}
-	\framecount{Building and Testing}\pause
-	\begin{itemize}[<+->]
-        \fitem CMake for Building
+    \framecount{Parsing and Unparsing}\pause
+    \begin{itemize}[<+->]
+        \fitem Parsing:
         \begin{itemize}
-            \fitem Cross-Platform Dependency Handling
+            \fitem Traverse Lua Table
+            \fitem Calls to C to Build Object Graph
         \end{itemize}
-        \fitem CTest for Testing
-		\begin{itemize}
-            \fitem Integrated Into CMake
-			\fitem Issue: Compile Time
-            \fitem Solution: Shared Library
+        \fitem Unparsing:
+        \begin{itemize}
+            \fitem Traverse Object Graph
+            \fitem Calls to Lua to Build Table
         \end{itemize}
-	\end{itemize}
+    \end{itemize}
 \end{frame}
 
 \nextframe
 \begin{frame}
-	\begin{center}\vspace{70pt}
-		{\Huge Thank You All For Listening}\\
+    \begin{center}\vspace{70pt}
+        {\Huge Thank You All For Listening}\\
         \vspace{54.35pt}
         \url{http://101companies.org/wiki/Contribution:c}
-	\end{center}
+    \end{center}
 \end{frame}
 \end{document}
 

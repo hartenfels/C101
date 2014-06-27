@@ -6,6 +6,7 @@
 #include "c101_Print.h"
 #include "c101_Subunit.h"
 #include "c101_Total.h"
+#include "c101_Unparsing.h"
 #include <assert.h>
 #include <stdio.h>
 
@@ -38,6 +39,8 @@ main(void)
 	printf("Cut:    %g\n", c101_total (c1));
 
     assert(c101_equalCompany(c1, c1));
+
+    c101_unparse(c1, stdout);
 
     c101_freeCompany(c1);
     return 0;

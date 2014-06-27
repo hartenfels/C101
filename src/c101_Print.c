@@ -6,7 +6,7 @@
 static int
 printVisitor(enum c101_VisitorType type, void* unit, void* userData)
 {
-    double* depth = userData;
+    size_t* depth = userData;
     switch (type) {
     case C101_COMPANY:
         {

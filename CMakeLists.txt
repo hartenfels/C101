@@ -14,6 +14,7 @@ set(mySourceFiles
     src/c101_Subunit.c
     src/c101_Test.c
     src/c101_Total.c
+    src/c101_Unparsing.c
     src/c101_Util.c
     src/c101_Vector.c
     src/c101_Visit.c

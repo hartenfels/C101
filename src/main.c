@@ -3,11 +3,9 @@
 #include "c101_Depth.h"
 #include "c101_Equal.h"
 #include "c101_Median.h"
-#include "c101_Parsing.h"
 #include "c101_Print.h"
 #include "c101_Subunit.h"
 #include "c101_Total.h"
-#include "c101_Unparsing.h"
 #include <assert.h>
 #include <stdio.h>
 
@@ -41,26 +39,6 @@ main(void)
 
     assert(c101_equalCompany(c1, c1));
 
-    struct c101_Company* c2 = c101_parse("sample.lua");
-    assert(c101_equalCompany(c1, c2));
-
-    FILE* luaOut  = fopen("out.lua",  "w");
-    if (!luaOut) {
-        perror("Could not write to out.lua");
-        return EXIT_FAILURE;
-    }
-
-    FILE* jsonOut = fopen("out.json", "w");
-    if (!jsonOut) {
-        perror("Could not write to out.json");
-        return EXIT_FAILURE;
-    }
-
-    c101_unparse(c1, luaOut, jsonOut);
-
-    fclose(jsonOut);
-    fclose(luaOut );
-    c101_freeCompany(c2);
     c101_freeCompany(c1);
     return 0;
 }

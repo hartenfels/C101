@@ -112,15 +112,11 @@ c101_back(struct c101_Vector* v)
 
 void**
 c101_begin(struct c101_Vector* v)
-{
-    return v->data;
-}
+{ return v->data; }
 
 void**
 c101_end(struct c101_Vector* v)
-{
-    return v->data + v->size;
-}
+{ return v->data + v->size; }
 
 
 void

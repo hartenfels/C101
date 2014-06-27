@@ -1,7 +1,7 @@
 Implementation for [101 Companies](http://101companies.org/), see http://101companies.org/wiki/Contribution:c for details.
 
 # Requirements
-This application manages its build process using [CMake](http://www.cmake.org/). It also requires a C11 capable compiler (e.g. GCC or Clang) and [Lua 5.1](http://www.lua.org/).
+This application manages its build process using [CMake](http://www.cmake.org/). It also requires a C11 capable compiler (e.g. GCC or Clang).
 
 # Unix
 

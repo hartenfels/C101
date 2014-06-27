@@ -1,8 +1,5 @@
 #include "c101_Util.h"
 #include <stdio.h>
-#include <lua.h>
-#include <lauxlib.h>
-#include <lualib.h>
 
 void*
 c101_malloc(size_t size)

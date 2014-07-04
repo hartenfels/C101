@@ -3,6 +3,7 @@
 #include "c101_Depth.h"
 #include "c101_Equal.h"
 #include "c101_Median.h"
+#include "c101_Parsing.h"
 #include "c101_Print.h"
 #include "c101_Subunit.h"
 #include "c101_Total.h"
@@ -40,7 +41,21 @@ main(void)
 
     assert(c101_equalCompany(c1, c1));
 
-    c101_unparse(c1, stdout);
+    FILE* xml = fopen("sample.xml", "w");
+    if (!xml) {
+        perror("Could not write to sample.xml");
+        return EXIT_FAILURE;
+    }
+    c101_unparse(c1, xml);
+    fclose(xml);
+
+    xml = fopen("sample.xml", "r");
+    if (!xml) {
+        perror("Could not read from sample.xml");
+        return EXIT_FAILURE;
+    }
+    c101_parse(xml);
+    fclose(xml);
 
     c101_freeCompany(c1);
     return 0;

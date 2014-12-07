@@ -76,7 +76,7 @@ member of this struct or modify the `size` and `capacity`, use the accessor func
 the `destroy` callback directly.
 <!------------------------------------------------------------------------------------>*/
 struct c101_Vector {
-    void** data;			///< The underlying array of `void*`.
+    void** data;            ///< The underlying array of `void*`.
     size_t size;            ///< Number of elements currently in this vector.
     size_t capacity;        ///< Maximum number of elements the array can hold.
     void (*destroy)(void*); ///< Callback function for destroying elements.

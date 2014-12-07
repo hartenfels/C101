@@ -35,9 +35,9 @@ main(void)
     c101_print(c1);
     printf("Depth:  %u\n", c101_depth (c1));
     printf("Median: %g\n", c101_median(c1));
-	printf("Total:  %g\n", c101_total (c1));
-	c101_cut(c1);
-	printf("Cut:    %g\n", c101_total (c1));
+    printf("Total:  %g\n", c101_total (c1));
+    c101_cut(c1);
+    printf("Cut:    %g\n", c101_total (c1));
 
     assert(c101_equalCompany(c1, c1));
 

@@ -23,7 +23,7 @@ c101_approxEq(double actual, double expected, double delta)
 struct c101_Company*
 c101_makeSampleCompany()
 {
-	return c101_newCompany("Acme Corporation", 2,
+    return c101_newCompany("Acme Corporation", 2,
                c101_newDepartment("Research", 3,
                    c101_newEmployee("Craig", "Redmond", 123456),
                    c101_newEmployee("Erik" , "Utrecht", 12345 ),
